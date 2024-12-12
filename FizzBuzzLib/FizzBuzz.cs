@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -49,5 +50,16 @@ namespace FizzBuzzLib
             }
             return result;
         }
+
+        public void SetReplacementPairs(Dictionary<int, string> pairs)
+        {
+            ReplacementPairs = pairs;
+        }
+
+        Dictionary<int, string> ReplacementPairs = new Dictionary<int, string>
+        {
+            { 3, "Fizz" },
+            { 5, "Buzz" }
+        };
     }
 }
