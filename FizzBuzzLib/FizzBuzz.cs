@@ -16,15 +16,13 @@ namespace FizzBuzzLib
         public string FizzBuzzifyAnInt(int input)
         {
             string output = ""; //Start with blank output
-            //Add Fizz for multiple of 3
-            if (input % 3 == 0)
+            //Iterate through replacement pairs
+            foreach(KeyValuePair<int, string> pair in ReplacementPairs)
             {
-                output += "Fizz";
-            }
-            //Add Buzz for multiple of 5
-            if (input % 5 == 0)
-            {
-                output += "Buzz";
+                if(input % pair.Key == 0) //Check if input is exact multiple of key
+                {
+                    output += pair.Value; //Add string for that input
+                }
             }
             //Replace cases that are neither with the input as a string
             if (output == "")
@@ -51,11 +49,14 @@ namespace FizzBuzzLib
             return result;
         }
 
+        //Setup replacement pairs for FizzBuzz. In the passed-in dictionary, the first value in each pair is the number the input
+        //should be a multiple of and the second value is the string to output if the input is a multiple of that value.
         public void SetReplacementPairs(Dictionary<int, string> pairs)
         {
             ReplacementPairs = pairs;
         }
 
+        //Data for replacement pairs for FizzBuzzifyAnInt
         Dictionary<int, string> ReplacementPairs = new Dictionary<int, string>
         {
             { 3, "Fizz" },
