@@ -1,4 +1,8 @@
-﻿namespace FizzBuzzLib
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace FizzBuzzLib
 {
     public class FizzBuzz //: IFizzBuzz
     {
@@ -27,6 +31,23 @@
                 output = input.ToString();
             }
             return output;
+        }
+
+        public IEnumerable<string> FizzBuzzValuesForRange(int start, int end)
+        {
+            List<string> result = new List<string>(); //Create empty result list
+            //Test for invalid/not-implemented cases
+            if(start < 0 || end < 0 || end < start)
+            {
+                //Throw not implemented exceptions
+                throw new System.NotImplementedException();
+            }
+            //Generate FizzBuzz results for every integer between start and end inclusive
+            for(int i=start; i<=end; i++)
+            {
+                result.Add(FizzBuzzifyAnInt(i));
+            }
+            return result;
         }
     }
 }
